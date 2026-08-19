@@ -7,7 +7,7 @@ export const site = {
   email: "arvinphilippoliga@gmail.com",
   phone: "+971 54 482 3795",
   linkedin: "https://linkedin.com/in/arvin-philip-poliga-b39914373",
-  github: "[YOUR GITHUB]",
+  github: "https://github.com/LuffyAnonymous",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://arvinpoliga.com",
 } as const;
 

@@ -41,18 +41,14 @@ export function Footer() {
           >
             LinkedIn
           </a>
-          {site.github === "[YOUR GITHUB]" ? (
-            <span className="text-ink-400">{site.github}</span>
-          ) : (
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="hover:text-ink-900"
-            >
-              GitHub
-            </a>
-          )}
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="hover:text-ink-900"
+          >
+            GitHub
+          </a>
         </div>
       </Container>
 

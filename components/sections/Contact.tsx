@@ -88,10 +88,15 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <span className="inline-flex items-center gap-3 text-ink-500">
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-3 text-ink-300 hover:text-ink-50"
+                >
                   <GithubIcon size={16} />
-                  {site.github}
-                </span>
+                  github.com/LuffyAnonymous
+                </a>
               </li>
             </ul>
           </div>

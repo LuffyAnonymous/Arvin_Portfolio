@@ -13,7 +13,6 @@ Open http://localhost:3000.
 
 ## Before going live
 
-- **GitHub URL** — `lib/site.ts` has `github: "[YOUR GITHUB]"`. Replace it with your profile URL (or remove the link in `components/layout/Footer.tsx` and `components/sections/Contact.tsx` if you'd rather not link one).
 - **Site URL** — set `NEXT_PUBLIC_SITE_URL` in a `.env.local` file to your real domain once you have one. It's used for canonical/OpenGraph metadata and the sitemap.
 - **Contact form delivery** — `app/api/contact/route.ts` validates submissions but doesn't send them anywhere yet. Wire it up to an email provider (e.g. Resend, Postmark) or a CRM before relying on it.
 
