@@ -3,7 +3,10 @@ export const site = {
   role: "Automation & Data Engineer",
   location: "Dubai, United Arab Emirates",
   tagline:
-    "I build practical business automations, dashboards, and data workflows that eliminate repetitive work and help teams work faster.",
+    "Automation and data engineering services in Dubai. I build business process automation, API integrations, n8n workflows, dashboards and internal tools.",
+  heroSupport:
+    "I build practical automation workflows, API integrations, dashboards and internal tools that remove repetitive manual work.",
+  availability: "Available for freelance projects",
   email: "arvinphilippoliga@gmail.com",
   phone: "+971 54 482 3795",
   linkedin: "https://linkedin.com/in/arvin-philip-poliga-b39914373",

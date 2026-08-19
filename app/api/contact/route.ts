@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FREQUENCIES = new Set(["Daily", "Weekly", "Monthly", "Occasionally"]);
 
 type ContactPayload = {
   name?: string;
   email?: string;
   company?: string;
-  message?: string;
+  automate?: string;
+  process?: string;
+  frequency?: string;
 };
 
 export async function POST(request: NextRequest) {
@@ -20,11 +23,12 @@ export async function POST(request: NextRequest) {
 
   const name = body.name?.trim() ?? "";
   const email = body.email?.trim() ?? "";
-  const message = body.message?.trim() ?? "";
+  const automate = body.automate?.trim() ?? "";
+  const frequency = body.frequency?.trim() ?? "";
 
-  if (!name || !email || !message) {
+  if (!name || !email || !automate) {
     return NextResponse.json(
-      { error: "Name, email and message are required." },
+      { error: "Name, email and what you'd like to automate are required." },
       { status: 400 },
     );
   }
@@ -33,7 +37,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   }
 
-  // Delivery is not wired up yet — connect an email or CRM provider here
+  if (frequency && !FREQUENCIES.has(frequency)) {
+    return NextResponse.json({ error: "Unrecognised frequency value." }, { status: 400 });
+  }
+
+  // TODO: delivery is not wired up yet — connect an email or CRM provider here
   // (e.g. Resend, Postmark) before relying on this endpoint in production.
   return NextResponse.json({ ok: true });
 }

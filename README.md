@@ -14,7 +14,7 @@ Open http://localhost:3000.
 ## Before going live
 
 - **Site URL** — set `NEXT_PUBLIC_SITE_URL` in a `.env.local` file to your real domain once you have one. It's used for canonical/OpenGraph metadata and the sitemap.
-- **Contact form delivery** — `app/api/contact/route.ts` validates submissions but doesn't send them anywhere yet. Wire it up to an email provider (e.g. Resend, Postmark) or a CRM before relying on it.
+- **TODO: Contact form delivery** — `app/api/contact/route.ts` validates submissions (name, email, company, what to automate, current process, frequency) but doesn't send them anywhere yet. Wire it up to an email provider (e.g. Resend, Postmark) or a CRM before relying on it in production.
 
 ## Structure
 

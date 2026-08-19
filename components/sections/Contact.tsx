@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { Mail, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -59,11 +60,14 @@ export function Contact() {
               can be automated.
             </p>
 
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Button href={`mailto:${site.email}`} variant="ghost">
                 <Mail size={16} aria-hidden />
                 Email Me
               </Button>
+              <Link href="#projects" className="text-sm text-ink-400 hover:text-ink-100">
+                View My Projects
+              </Link>
             </div>
 
             <ul className="mt-12 space-y-3 border-t border-ink-50/10 pt-8 text-sm">
@@ -118,22 +122,62 @@ export function Contact() {
                   <Field label="Name" name="name" type="text" autoComplete="name" required />
                   <Field label="Email" name="email" type="email" autoComplete="email" required />
                 </div>
-                <Field label="Company (optional)" name="company" type="text" autoComplete="organization" />
+                <Field
+                  label="Company / business (optional)"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                />
                 <div>
                   <label
-                    htmlFor="message"
+                    htmlFor="automate"
                     className="mb-2 block text-xs font-medium uppercase tracking-wide text-ink-400"
                   >
-                    What&apos;s taking too much time?
+                    What would you like to automate?
                   </label>
                   <textarea
-                    id="message"
-                    name="message"
+                    id="automate"
+                    name="automate"
                     required
-                    rows={4}
+                    rows={3}
                     className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
                     placeholder="e.g. Someone on my team copies order emails into a spreadsheet every morning."
                   />
+                </div>
+                <div>
+                  <label
+                    htmlFor="process"
+                    className="mb-2 block text-xs font-medium uppercase tracking-wide text-ink-400"
+                  >
+                    Current process or problem (optional)
+                  </label>
+                  <textarea
+                    id="process"
+                    name="process"
+                    rows={3}
+                    className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
+                    placeholder="e.g. Excel spreadsheet, Google Sheets, a specific tool you're using now."
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="frequency"
+                    className="mb-2 block text-xs font-medium uppercase tracking-wide text-ink-400"
+                  >
+                    How often does this happen? (optional)
+                  </label>
+                  <select
+                    id="frequency"
+                    name="frequency"
+                    defaultValue=""
+                    className="w-full rounded-md border border-ink-50/20 bg-ink-900 px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 focus:border-accent-500"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Occasionally">Occasionally</option>
+                  </select>
                 </div>
 
                 {status === "error" ? (
@@ -155,7 +199,7 @@ export function Contact() {
                       Sending…
                     </>
                   ) : (
-                    "Start a Conversation"
+                    "Tell Me About Your Process"
                   )}
                 </Button>
               </form>

@@ -3,27 +3,26 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const reasons = [
   {
-    title: "Practical solutions",
+    title: "Business-first approach",
     description:
-      "I focus on solving real business problems rather than adding unnecessary technology.",
+      "I focus on solving the actual workflow problem rather than adding unnecessary technology.",
   },
   {
-    title: "Built around your workflow",
-    description: "I adapt the automation to how your business actually operates.",
+    title: "Automation + data",
+    description: "I can work across automation, APIs, databases and data processing.",
   },
   {
-    title: "Integration-focused",
+    title: "Works with your existing tools",
+    description: "The goal is to connect the systems you already use whenever possible.",
+  },
+  {
+    title: "Built for real workflows",
+    description: "The automation should fit how your team actually works.",
+  },
+  {
+    title: "Maintainable",
     description:
-      "I can connect the tools you already use instead of forcing you to replace everything.",
-  },
-  {
-    title: "Data-driven",
-    description: "I understand both automation and the data behind the process.",
-  },
-  {
-    title: "Long-term thinking",
-    description:
-      "The goal isn't just to make something work once. It should be maintainable and scalable.",
+      "The goal is a system that remains understandable and useful after deployment.",
   },
 ];
 

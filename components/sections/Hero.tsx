@@ -26,21 +26,28 @@ export function Hero() {
 
       <Container className="relative pt-28 pb-24 md:pt-36 md:pb-32">
         <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
-          {site.role} — {site.location}
+          {site.role}
         </p>
 
         <h1 className="mt-6 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tighter text-ink-50 md:text-6xl">
-          Turn repetitive work into automated workflows.
+          Automate the work your team shouldn&apos;t have to do.
         </h1>
 
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-300">
-          I help businesses automate manual processes, connect their tools, and turn
-          messy data into useful systems.
+          {site.heroSupport}
         </p>
+
+        <div className="mt-6 flex items-center gap-2.5 text-sm text-ink-400">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="absolute inset-0 animate-node-pulse rounded-full bg-accent-500" />
+            <span className="relative h-2 w-2 rounded-full bg-accent-400" />
+          </span>
+          {site.location.replace(", United Arab Emirates", ", UAE")} · {site.availability}
+        </div>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Button href="#contact" variant="primary">
-            Let&apos;s Work Together
+            Tell Me What You Want to Automate
           </Button>
           <Button href="#projects" variant="ghost">
             View My Work

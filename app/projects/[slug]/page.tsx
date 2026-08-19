@@ -63,47 +63,66 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-300">
             {project.summary}
           </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.tech.map((item) => (
-              <Tag key={item} tone="dark">
-                {item}
-              </Tag>
-            ))}
-          </div>
         </Container>
       </header>
 
       <section className="bg-white py-20 md:py-28">
         <Container>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1.4fr_1fr]">
-            <div className="max-w-2xl space-y-6 text-base leading-relaxed text-ink-700">
-              {project.context.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
+            <div className="max-w-2xl space-y-12">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
+                  The problem
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-ink-700">
+                  {project.problem}
+                </p>
+              </div>
 
-              {project.highlights ? (
-                <div className="!mt-10 border-t border-ink-200 pt-8">
-                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
-                    What it does
-                  </p>
-                  <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {project.highlights.map((highlight) => (
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
+                  The solution
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-ink-700">
+                  {project.solution}
+                </p>
+
+                {project.solutionHighlights ? (
+                  <ul className="mt-6 grid grid-cols-1 gap-3 border-t border-ink-200 pt-6 sm:grid-cols-2">
+                    {project.solutionHighlights.map((highlight) => (
                       <li key={highlight} className="flex items-start gap-2 text-sm text-ink-700">
                         <Check size={16} className="mt-0.5 shrink-0 text-accent-600" aria-hidden />
                         {highlight}
                       </li>
                     ))}
                   </ul>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
             </div>
 
-            <div className="rounded-lg border border-ink-200 bg-ink-50 p-8">
+            <div className="rounded-lg border border-ink-200 bg-ink-50 p-8 md:sticky md:top-24">
               <p className="mb-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
-                Workflow
+                The workflow
               </p>
               <WorkflowStrip steps={project.workflow} orientation="vertical" activeIndex={1} />
+            </div>
+          </div>
+
+          <div className="mt-16 max-w-2xl border-t border-ink-200 pt-12">
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
+              The result
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-ink-700">{project.result}</p>
+          </div>
+
+          <div className="mt-12 max-w-2xl border-t border-ink-200 pt-8">
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
+              Technology
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.tech.map((item) => (
+                <Tag key={item}>{item}</Tag>
+              ))}
             </div>
           </div>
         </Container>

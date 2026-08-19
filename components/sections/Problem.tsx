@@ -2,14 +2,15 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const problems = [
-  "Copying data between systems",
+  "Copying orders between systems",
   "Updating Excel spreadsheets manually",
-  "Checking emails for orders",
+  "Checking emails for important information",
   "Sending repetitive notifications",
-  "Creating reports every week",
-  "Moving information between different platforms",
+  "Creating weekly reports",
+  "Moving data between platforms",
   "Monitoring websites manually",
-  "Repeating the same administrative tasks every day",
+  "Extracting information from websites",
+  "Repeating the same administrative process every day",
 ];
 
 export function Problem() {

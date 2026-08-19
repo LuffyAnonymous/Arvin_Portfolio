@@ -23,10 +23,12 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const seoTitle = "Arvin Poliga — Automation & Data Engineer | Dubai";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: seoTitle,
     template: `%s — ${site.name}`,
   },
   description: site.tagline,
@@ -39,17 +41,20 @@ export const metadata: Metadata = {
     "API integrations",
   ],
   authors: [{ name: site.name }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_AE",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.role}`,
+    title: seoTitle,
     description: site.tagline,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: seoTitle,
     description: site.tagline,
   },
 };
