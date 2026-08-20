@@ -1,5 +1,6 @@
 export const site = {
   name: "Arvin Philip Poliga",
+  shortName: "Arvin Poliga",
   role: "Automation & Data Engineer",
   location: "Dubai, United Arab Emirates",
   tagline:

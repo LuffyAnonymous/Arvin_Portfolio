@@ -58,11 +58,10 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between">
         <Link
           href="#home"
-          className="font-display text-sm font-semibold tracking-tight text-ink-900"
+          className="font-display text-xl font-semibold tracking-tight text-ink-900"
           onClick={() => setOpen(false)}
         >
-          {site.name.split(" ").slice(0, 2).join(" ")}
-          <span className="text-accent-600">.</span>
+          {site.shortName}
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
