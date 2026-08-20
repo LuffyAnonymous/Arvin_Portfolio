@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { LiveWorkflowPanel } from "@/components/ui/LiveWorkflowPanel";
@@ -57,8 +58,17 @@ export function Hero() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative">
-              <LiveWorkflowPanel />
+            <div className="relative mx-auto max-w-sm lg:max-w-none">
+              <div className="accent-glow relative aspect-[4/5] overflow-hidden rounded-lg border border-ink-50/10">
+                <Image
+                  src="/arvin-photo.jpg"
+                  alt={site.name}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, (min-width: 640px) 60vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
 
               <div className="relative z-10 -mt-8 ml-8 w-fit rounded-lg border border-ink-50/10 bg-ink-900 px-6 py-5 sm:-mt-10 sm:ml-10">
                 <p className="font-display text-4xl font-semibold tracking-tight text-ink-50">
@@ -72,7 +82,16 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-x-10 gap-y-3 border-t border-ink-50/10 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between md:mt-24">
+        <div className="mt-16 border-t border-ink-50/10 pt-10 md:mt-20">
+          <p className="mb-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
+            What automation looks like
+          </p>
+          <div className="max-w-sm">
+            <LiveWorkflowPanel />
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-x-10 gap-y-3 border-t border-ink-50/10 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             {statusItems.map((item) => (
               <span
