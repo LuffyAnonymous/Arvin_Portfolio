@@ -106,10 +106,5 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // TEMPORARY DIAGNOSTIC — remove once email delivery is confirmed working.
-  const apiKey = process.env.RESEND_API_KEY;
-  return NextResponse.json({
-    ok: true,
-    debug: { hasKey: Boolean(apiKey), keyLength: apiKey?.length ?? 0, keyPrefix: apiKey?.slice(0, 4) ?? null },
-  });
+  return NextResponse.json({ ok: true });
 }
