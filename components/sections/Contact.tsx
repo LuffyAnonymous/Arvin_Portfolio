@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { Mail, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, Loader2, CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
@@ -56,7 +56,7 @@ export function Contact() {
               Have a process that takes too much time?
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-300">
-              Tell me what you&apos;re doing manually. I&apos;ll help you figure out what
+              Show me what you&apos;re doing manually. I&apos;ll help you figure out what
               can be automated.
             </p>
 
@@ -103,6 +103,24 @@ export function Contact() {
                 </a>
               </li>
             </ul>
+
+            <div className="mt-10 rounded-md border border-ink-50/10 bg-ink-50/[0.03] px-5 py-4 font-mono text-xs uppercase tracking-[0.1em]">
+              <p className="text-ink-500">New project</p>
+              <div className="mt-3 flex items-center justify-between border-t border-ink-50/10 pt-3">
+                <span className="text-ink-500">Status</span>
+                <span className="inline-flex items-center gap-2 text-accent-400">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inset-0 animate-node-pulse rounded-full bg-accent-500" />
+                    <span className="relative h-1.5 w-1.5 rounded-full bg-accent-400" />
+                  </span>
+                  Accepting enquiries
+                </span>
+              </div>
+              <div className="mt-2 flex items-center justify-between border-t border-ink-50/10 pt-2">
+                <span className="text-ink-500">Location</span>
+                <span className="text-ink-300">Dubai, UAE</span>
+              </div>
+            </div>
           </div>
 
           <div className="rounded-lg border border-ink-50/10 bg-ink-50/[0.03] p-6 sm:p-8">
@@ -143,6 +161,10 @@ export function Contact() {
                     className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
                     placeholder="e.g. Someone on my team copies order emails into a spreadsheet every morning."
                   />
+                  <p className="mt-2 text-xs text-ink-500">
+                    Don&apos;t worry if you don&apos;t know what&apos;s possible. Just
+                    describe what you&apos;re doing today.
+                  </p>
                 </div>
                 <div>
                   <label
@@ -199,7 +221,10 @@ export function Contact() {
                       Sending…
                     </>
                   ) : (
-                    "Tell Me About Your Process"
+                    <>
+                      Send Process
+                      <ArrowRight size={16} aria-hidden />
+                    </>
                   )}
                 </Button>
               </form>

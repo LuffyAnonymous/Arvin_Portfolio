@@ -9,12 +9,33 @@ import { navLinks, site } from "@/lib/site";
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState("#home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((el): el is Element => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHref(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -45,15 +66,27 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="inline-block text-sm text-ink-600 transition-[transform,color] duration-200 ease-out hover:scale-110 hover:text-ink-900"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeHref === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "true" : undefined}
+                className={`relative inline-block py-1 text-sm transition-[transform,color] duration-200 ease-out hover:scale-110 ${
+                  isActive ? "text-accent-600" : "text-ink-600 hover:text-ink-900"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px bg-accent-500 transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0"
+                  }`}
+                  aria-hidden
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         <Link

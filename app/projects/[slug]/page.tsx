@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ComponentType } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
@@ -7,6 +8,19 @@ import { Tag } from "@/components/ui/Tag";
 import { WorkflowStrip } from "@/components/ui/WorkflowStrip";
 import { Button } from "@/components/ui/Button";
 import { getProjectBySlug, projects } from "@/lib/projects";
+import {
+  TicketOpsPreview,
+  BudgetFlowPreview,
+  DataExtractionPreview,
+  BusinessWorkflowsPreview,
+} from "@/components/projects/ProjectPreviews";
+
+const previews: Record<string, ComponentType> = {
+  "ticket-operations-automation": TicketOpsPreview,
+  budgetflow: BudgetFlowPreview,
+  "data-extraction-automation": DataExtractionPreview,
+  "business-automation-workflows": BusinessWorkflowsPreview,
+};
 
 type Params = { slug: string };
 
@@ -41,10 +55,11 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+  const Preview = previews[project.slug];
 
   return (
     <article>
-      <header className="bg-ink-900 pt-28 pb-20 md:pt-36 md:pb-24">
+      <header className="bg-ink-900 pt-28 pb-16 md:pt-36">
         <Container>
           <Link
             href="/#projects"
@@ -66,6 +81,16 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </Container>
       </header>
 
+      {Preview ? (
+        <section className="bg-ink-900 pb-20 md:pb-28">
+          <Container>
+            <div className="mx-auto max-w-xl">
+              <Preview />
+            </div>
+          </Container>
+        </section>
+      ) : null}
+
       <section className="bg-white py-20 md:py-28">
         <Container>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1.4fr_1fr]">
@@ -81,7 +106,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
-                  The solution
+                  The approach
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-ink-700">
                   {project.solution}
@@ -116,9 +141,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           </div>
 
           <div className="mt-12 max-w-2xl border-t border-ink-200 pt-8">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
-              Technology
-            </p>
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">Stack</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tech.map((item) => (
                 <Tag key={item}>{item}</Tag>

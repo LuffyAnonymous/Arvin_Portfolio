@@ -1,15 +1,13 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { WorkflowStrip } from "@/components/ui/WorkflowStrip";
+import { LiveWorkflowPanel } from "@/components/ui/LiveWorkflowPanel";
 import { site } from "@/lib/site";
 import { projects } from "@/lib/projects";
 
-const heroFlow = [
-  { label: "Trigger" },
-  { label: "Process" },
-  { label: "Database" },
-  { label: "Notification" },
-  { label: "Report" },
+const statusItems = [
+  { label: "Automation engine", value: "Online" },
+  { label: "API integrations", value: "Ready" },
+  { label: "Data pipelines", value: "Active" },
 ];
 
 export function Hero() {
@@ -25,7 +23,7 @@ export function Hero() {
         aria-hidden
       />
 
-      <Container className="relative pt-28 pb-24 md:pt-36 md:pb-32">
+      <Container className="relative pt-28 pb-16 md:pt-36">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:items-center lg:gap-10">
           <div className="lg:col-span-7">
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
@@ -60,17 +58,7 @@ export function Hero() {
 
           <div className="lg:col-span-5">
             <div className="relative">
-              <div className="accent-glow rounded-lg border border-accent-500/25 bg-ink-800/60 p-8">
-                <p className="mb-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
-                  What automation looks like
-                </p>
-                <WorkflowStrip
-                  steps={heroFlow}
-                  tone="dark"
-                  activeIndex={1}
-                  orientation="vertical"
-                />
-              </div>
+              <LiveWorkflowPanel />
 
               <div className="relative z-10 -mt-8 ml-8 w-fit rounded-lg border border-ink-50/10 bg-ink-900 px-6 py-5 sm:-mt-10 sm:ml-10">
                 <p className="font-display text-4xl font-semibold tracking-tight text-ink-50">
@@ -82,6 +70,27 @@ export function Hero() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-20 flex flex-col gap-x-10 gap-y-3 border-t border-ink-50/10 pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between md:mt-24">
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {statusItems.map((item) => (
+              <span
+                key={item.label}
+                className="inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.1em] text-ink-500"
+              >
+                <span className="relative flex h-1.5 w-1.5 shrink-0">
+                  <span className="absolute inset-0 animate-node-pulse rounded-full bg-accent-500" />
+                  <span className="relative h-1.5 w-1.5 rounded-full bg-accent-400" />
+                </span>
+                {item.label}
+                <span className="text-accent-400">{item.value}</span>
+              </span>
+            ))}
+          </div>
+          <span className="font-mono text-xs uppercase tracking-[0.1em] text-ink-600">
+            Dubai / UTC+4
+          </span>
         </div>
       </Container>
     </section>
