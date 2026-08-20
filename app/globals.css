@@ -65,6 +65,10 @@
       animation: flow-x 3.2s linear infinite;
     }
   }
+
+  .accent-glow {
+    box-shadow: 0 0 70px -20px color-mix(in srgb, var(--color-accent-500) 45%, transparent);
+  }
 }
 
 @layer base {

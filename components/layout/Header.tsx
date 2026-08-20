@@ -49,7 +49,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-ink-600 transition-colors duration-200 hover:text-ink-900"
+              className="inline-block text-sm text-ink-600 transition-[transform,color] duration-200 ease-out hover:scale-110 hover:text-ink-900"
             >
               {link.label}
             </Link>
