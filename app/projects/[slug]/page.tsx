@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import type { ComponentType } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { Tag } from "@/components/ui/Tag";
-import { WorkflowStrip } from "@/components/ui/WorkflowStrip";
 import { Button } from "@/components/ui/Button";
+import { CaseStudyInspector } from "@/components/projects/CaseStudyInspector";
 import { getProjectBySlug, projects } from "@/lib/projects";
 import {
   TicketOpsPreview,
@@ -72,7 +73,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
             {project.category}
           </p>
-          <h1 className="mt-3 max-w-3xl font-display text-3xl font-semibold tracking-tighter text-ink-50 md:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-balance font-display text-3xl font-semibold tracking-tighter text-ink-50 md:text-5xl">
             {project.title}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-300">
@@ -93,55 +94,22 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
       <section className="bg-white py-20 md:py-28">
         <Container>
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-[1.4fr_1fr]">
-            <div className="max-w-2xl space-y-12">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
-                  The problem
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-ink-700">
-                  {project.problem}
-                </p>
-              </div>
+          <CaseStudyInspector
+            problem={project.problem}
+            solution={project.solution}
+            solutionHighlights={project.solutionHighlights}
+            workflow={project.workflow}
+          />
 
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
-                  The approach
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-ink-700">
-                  {project.solution}
-                </p>
-
-                {project.solutionHighlights ? (
-                  <ul className="mt-6 grid grid-cols-1 gap-3 border-t border-ink-200 pt-6 sm:grid-cols-2">
-                    {project.solutionHighlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-2 text-sm text-ink-700">
-                        <Check size={16} className="mt-0.5 shrink-0 text-accent-600" aria-hidden />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="rounded-lg border border-ink-200 bg-ink-50 p-8 md:sticky md:top-24">
-              <p className="mb-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-500">
-                The workflow
-              </p>
-              <WorkflowStrip steps={project.workflow} orientation="vertical" activeIndex={1} />
-            </div>
-          </div>
-
-          <div className="mt-16 max-w-2xl border-t border-ink-200 pt-12">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
+          <Reveal className="mt-16 max-w-2xl border-t border-ink-200 pt-12">
+            <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-accent-600">
               The result
-            </p>
+            </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-700">{project.result}</p>
-          </div>
+          </Reveal>
 
           <div className="mt-12 max-w-2xl border-t border-ink-200 pt-8">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">Stack</p>
+            <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-ink-500">Stack</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tech.map((item) => (
                 <Tag key={item}>{item}</Tag>

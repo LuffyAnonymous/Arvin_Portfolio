@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tag } from "@/components/ui/Tag";
+import { Reveal } from "@/components/ui/Reveal";
 import { projects } from "@/lib/projects";
 import {
   TicketOpsPreview,
@@ -23,20 +24,24 @@ export function Projects() {
   return (
     <section id="projects" className="bg-ink-900 py-24 md:py-32">
       <Container>
-        <SectionHeading
-          eyebrow="Featured work"
-          title="Systems I've actually built"
-          description="Not mockups — the same automation and data patterns running in real operations, applied to different problems."
-          tone="dark"
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Featured work"
+            title="Systems I've actually built"
+            description="Not mockups — the same automation and data patterns running in real operations, applied to different problems."
+            tone="dark"
+          />
+        </Reveal>
 
         <div className="mt-16 flex flex-col">
           {projects.map((project, index) => {
             const reversed = index % 2 === 1;
             const Preview = previews[project.slug];
             return (
-              <article
+              <Reveal
                 key={project.slug}
+                delay={(index % 2) * 100}
+                as="article"
                 className="grid grid-cols-1 gap-10 border-t border-ink-50/10 py-14 first:pt-0 md:grid-cols-2 md:gap-16 md:py-20"
               >
                 <div className={reversed ? "md:order-2" : ""}>
@@ -68,7 +73,7 @@ export function Projects() {
                     View case study
                     <ArrowRight
                       size={16}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
+                      className="transition-transform duration-150 group-hover:translate-x-1"
                       aria-hidden
                     />
                   </Link>
@@ -82,7 +87,7 @@ export function Projects() {
                 >
                   {Preview ? <Preview /> : null}
                 </Link>
-              </article>
+              </Reveal>
             );
           })}
         </div>

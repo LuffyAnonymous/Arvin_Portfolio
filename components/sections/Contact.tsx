@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Mail, Loader2, CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { site } from "@/lib/site";
 
@@ -48,15 +49,15 @@ export function Contact() {
     <section id="contact" className="bg-ink-900 py-24 md:py-32">
       <Container>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
               Contact
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink-50 md:text-4xl">
+            <h2 className="mt-3 text-balance font-display text-3xl font-semibold tracking-tight text-ink-50 md:text-4xl">
               Have a process that takes too much time?
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-300">
-              Show me what you&apos;re doing manually. I&apos;ll help you figure out what
+              Show me what you’re doing manually. I’ll help you figure out what
               can be automated.
             </p>
 
@@ -121,21 +122,24 @@ export function Contact() {
                 <span className="text-ink-300">Dubai, UAE</span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="rounded-lg border border-ink-50/10 bg-ink-50/[0.03] p-6 sm:p-8">
+          <Reveal delay={150} className="rounded-lg border border-ink-50/10 bg-ink-50/[0.03] p-6 sm:p-8">
             {status === "success" ? (
-              <div className="flex h-full flex-col items-start justify-center gap-3 py-12 text-center sm:text-left">
+              <div
+                className="flex h-full flex-col items-start justify-center gap-3 py-12 text-center sm:text-left"
+                aria-live="polite"
+              >
                 <CheckCircle2 className="text-accent-400" size={28} aria-hidden />
                 <p className="font-display text-lg font-semibold text-ink-50">
                   Message sent.
                 </p>
                 <p className="text-sm text-ink-300">
-                  Thanks for reaching out — I&apos;ll reply from {site.email} shortly.
+                  Thanks for reaching out — I’ll reply from {site.email} shortly.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <Field label="Name" name="name" type="text" autoComplete="name" required />
                   <Field label="Email" name="email" type="email" autoComplete="email" required />
@@ -158,12 +162,12 @@ export function Contact() {
                     name="automate"
                     required
                     rows={3}
-                    className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
+                    className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-150 placeholder:text-ink-500 focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-500/40"
                     placeholder="e.g. Someone on my team copies order emails into a spreadsheet every morning."
                   />
                   <p className="mt-2 text-xs text-ink-500">
-                    Don&apos;t worry if you don&apos;t know what&apos;s possible. Just
-                    describe what you&apos;re doing today.
+                    Don’t worry if you don’t know what’s possible. Just
+                    describe what you’re doing today.
                   </p>
                 </div>
                 <div>
@@ -177,7 +181,7 @@ export function Contact() {
                     id="process"
                     name="process"
                     rows={3}
-                    className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
+                    className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-150 placeholder:text-ink-500 focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-500/40"
                     placeholder="e.g. Excel spreadsheet, Google Sheets, a specific tool you're using now."
                   />
                 </div>
@@ -192,7 +196,7 @@ export function Contact() {
                     id="frequency"
                     name="frequency"
                     defaultValue=""
-                    className="w-full rounded-md border border-ink-50/20 bg-ink-900 px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 focus:border-accent-500"
+                    className="w-full rounded-md border border-ink-50/20 bg-ink-900 px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-150 focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-500/40"
                   >
                     <option value="">Select an option</option>
                     <option value="Daily">Daily</option>
@@ -203,7 +207,7 @@ export function Contact() {
                 </div>
 
                 {status === "error" ? (
-                  <p className="flex items-center gap-2 text-sm text-red-300">
+                  <p className="flex items-center gap-2 text-sm text-red-300" aria-live="polite">
                     <AlertCircle size={16} aria-hidden />
                     {errorMessage}
                   </p>
@@ -229,7 +233,7 @@ export function Contact() {
                 </Button>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>
@@ -263,7 +267,8 @@ function Field({
         type={type}
         autoComplete={autoComplete}
         required={required}
-        className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-200 placeholder:text-ink-500 focus:border-accent-500"
+        spellCheck={type === "email" ? false : undefined}
+        className="w-full rounded-md border border-ink-50/20 bg-transparent px-4 py-3 text-sm text-ink-50 outline-none transition-colors duration-150 placeholder:text-ink-500 focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-500/40"
       />
     </div>
   );

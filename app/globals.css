@@ -53,6 +53,7 @@
 
   --animate-node-pulse: node-pulse 2.4s ease-in-out infinite;
   --animate-fade-up: fade-up 0.45s ease-out both;
+  --animate-glow-drift: glow-drift 14s ease-in-out infinite alternate;
 }
 
 @layer utilities {
@@ -89,6 +90,14 @@
     background: var(--color-ink-50);
     color: var(--color-ink-900);
     font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-accent-500) 25%, transparent);
   }
 
   ::selection {
@@ -190,3 +199,19 @@
     opacity: 0;
   }
 }
+
+@keyframes glow-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-6%, 5%) scale(1.12);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(4%, -4%) scale(0.94);
+    opacity: 0.55;
+  }
+}
+

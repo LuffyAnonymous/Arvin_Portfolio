@@ -13,9 +13,9 @@ export default function Home() {
       <Hero />
       <Problem />
       <Marquee tone="light" />
-      <Projects />
       <AutomationDemo />
       <Process />
+      <Projects />
       <About />
       <Contact />
     </>

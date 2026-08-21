@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -57,6 +57,10 @@ export const metadata: Metadata = {
     title: seoTitle,
     description: site.tagline,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#15160f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

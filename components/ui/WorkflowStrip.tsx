@@ -14,6 +14,7 @@ export function WorkflowStrip({
   activeIndex,
   animated = true,
   orientation = "auto",
+  onStepSelect,
 }: {
   steps: WorkflowStripStep[];
   tone?: "light" | "dark";
@@ -21,9 +22,12 @@ export function WorkflowStrip({
   animated?: boolean;
   /** "auto" switches to a horizontal layout at the md breakpoint; "vertical" stays a stacked timeline at every width. */
   orientation?: "auto" | "vertical";
+  /** When provided, each step becomes a clickable control instead of a static readout. */
+  onStepSelect?: (index: number) => void;
 }) {
   const isDark = tone === "dark";
   const isAuto = orientation === "auto";
+  const isInteractive = typeof onStepSelect === "function";
   const lineColor = isDark ? "bg-ink-50/20" : "bg-ink-300";
   const nodeIdle = isDark ? "border-ink-50/40 bg-ink-900" : "border-ink-400 bg-ink-50";
 
@@ -35,18 +39,15 @@ export function WorkflowStrip({
       {steps.map((step, i) => {
         const isLast = i === steps.length - 1;
         const isActive = i === activeIndex;
-        return (
-          <li
-            key={step.label}
-            className={`flex items-stretch ${isAuto ? "md:min-w-0 md:flex-1 md:flex-col" : ""}`}
-          >
+        const content = (
+          <>
             <div
               className={`flex flex-col items-center pr-4 ${
                 isAuto ? "md:w-full md:flex-row md:pr-0 md:pb-4" : ""
               }`}
             >
               <span
-                className={`z-10 h-3 w-3 shrink-0 rounded-sm border-2 ${
+                className={`z-10 h-3 w-3 shrink-0 rounded-sm border-2 transition-colors duration-200 ${
                   isActive
                     ? `border-accent-500 bg-accent-500 ${animated ? "animate-node-pulse" : ""}`
                     : nodeIdle
@@ -73,7 +74,7 @@ export function WorkflowStrip({
             </div>
             <div className={`pb-6 ${isAuto ? "md:pb-0" : ""}`}>
               <p
-                className={`break-words font-mono text-sm ${
+                className={`break-words font-mono text-sm transition-colors duration-200 ${
                   isActive ? "text-accent-500" : isDark ? "text-ink-100" : "text-ink-800"
                 }`}
               >
@@ -89,6 +90,32 @@ export function WorkflowStrip({
                 </p>
               ) : null}
             </div>
+          </>
+        );
+
+        if (isInteractive) {
+          return (
+            <li key={step.label} className={isAuto ? "md:min-w-0 md:flex-1" : ""}>
+              <button
+                type="button"
+                onClick={() => onStepSelect(i)}
+                aria-pressed={isActive}
+                className={`flex w-full items-stretch rounded-sm text-left outline-none transition-opacity duration-150 hover:opacity-80 focus-visible:ring-2 focus-visible:ring-accent-500/50 ${
+                  isAuto ? "md:flex-col" : ""
+                }`}
+              >
+                {content}
+              </button>
+            </li>
+          );
+        }
+
+        return (
+          <li
+            key={step.label}
+            className={`flex items-stretch ${isAuto ? "md:min-w-0 md:flex-1 md:flex-col" : ""}`}
+          >
+            {content}
           </li>
         );
       })}

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, RotateCcw } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 
 const manualSteps = [
   "New order",
@@ -80,17 +81,19 @@ export function AutomationDemo() {
   return (
     <section className="bg-ink-900 py-24 md:py-32">
       <Container className="mx-auto max-w-3xl text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
-          The signature move
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink-50 md:text-4xl">
-          Watch a manual process disappear.
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-ink-300">
-          Same order, same outcome. One version needs a person at every single step.
-        </p>
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent-300">
+            The signature move
+          </p>
+          <h2 className="mt-3 text-balance font-display text-3xl font-semibold tracking-tight text-ink-50 md:text-4xl">
+            Watch a manual process disappear.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-ink-300">
+            Same order, same outcome. One version needs a person at every single step.
+          </p>
+        </Reveal>
 
-        <div className="mt-12 rounded-lg border border-ink-50/10 bg-ink-800/40 p-8 text-left sm:p-10">
+        <Reveal delay={150} className="mt-12 rounded-lg border border-ink-50/10 bg-ink-800/40 p-8 text-left sm:p-10">
           <div
             className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out ${
               manualCollapsed ? "grid-rows-[0fr] opacity-0" : "grid-rows-[1fr] opacity-100"
@@ -164,7 +167,7 @@ export function AutomationDemo() {
               <button
                 type="button"
                 onClick={run}
-                className="inline-flex items-center gap-2 rounded-md bg-accent-600 px-6 py-3 text-sm font-medium text-ink-50 transition-colors duration-200 hover:bg-accent-700"
+                className="inline-flex items-center gap-2 rounded-full bg-accent-600 px-6 py-3 text-sm font-medium text-ink-50 transition-colors duration-150 hover:bg-accent-700"
               >
                 <Play size={14} aria-hidden />
                 Automate This
@@ -173,7 +176,7 @@ export function AutomationDemo() {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex items-center gap-2 rounded-md border border-ink-50/20 px-6 py-3 text-sm font-medium text-ink-100 transition-colors duration-200 hover:border-ink-50/40"
+                className="inline-flex items-center gap-2 rounded-md border border-ink-50/20 px-6 py-3 text-sm font-medium text-ink-100 transition-colors duration-150 hover:border-ink-50/40"
               >
                 <RotateCcw size={14} aria-hidden />
                 Run It Again
@@ -188,7 +191,7 @@ export function AutomationDemo() {
               </button>
             )}
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

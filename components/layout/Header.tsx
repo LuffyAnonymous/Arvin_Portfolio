@@ -56,13 +56,21 @@ export function Header() {
       }`}
     >
       <Container className="flex h-16 items-center justify-between">
-        <Link
-          href="#home"
-          className="font-display text-xl font-semibold tracking-tight text-ink-900"
-          onClick={() => setOpen(false)}
-        >
-          {site.shortName}
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="#home"
+            className="font-display text-xl font-semibold tracking-tight text-ink-900"
+            onClick={() => setOpen(false)}
+          >
+            {site.shortName}
+          </Link>
+          <span
+            className="hidden items-center gap-1.5 border-l border-ink-200 pl-3 font-mono text-[0.65rem] uppercase tracking-[0.08em] text-ink-400 xl:flex"
+            aria-hidden
+          >
+            n8n · Python · TypeScript
+          </span>
+        </div>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
           {navLinks.map((link) => {
@@ -72,13 +80,13 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "true" : undefined}
-                className={`relative inline-block py-1 text-sm transition-[transform,color] duration-200 ease-out hover:scale-110 ${
+                className={`relative inline-block py-1 text-sm transition-[transform,color] duration-150 ease-out hover:scale-110 ${
                   isActive ? "text-accent-600" : "text-ink-600 hover:text-ink-900"
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-0.5 left-0 h-px bg-accent-500 transition-all duration-300 ${
+                  className={`absolute -bottom-0.5 left-0 h-px bg-accent-500 transition-[width] duration-300 ${
                     isActive ? "w-full" : "w-0"
                   }`}
                   aria-hidden
@@ -90,9 +98,9 @@ export function Header() {
 
         <Link
           href="#contact"
-          className="hidden rounded-md bg-accent-600 px-5 py-2.5 text-sm font-medium text-ink-50 transition-colors duration-200 hover:bg-accent-700 md:inline-flex"
+          className="hidden rounded-full bg-accent-600 px-5 py-2.5 text-sm font-medium text-ink-50 transition-colors duration-150 hover:bg-accent-700 md:inline-flex"
         >
-          Let&apos;s Talk
+          Let’s Talk
         </Link>
 
         <button

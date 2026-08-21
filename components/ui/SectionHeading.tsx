@@ -30,7 +30,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl ${
+        className={`mt-3 text-balance font-display text-3xl font-semibold tracking-tight md:text-4xl ${
           isDark ? "text-ink-50" : "text-ink-900"
         }`}
       >

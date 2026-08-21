@@ -13,7 +13,7 @@ export function Technologies() {
   return (
     <div className="border-t border-ink-200 pt-10">
       <p className="font-display text-lg font-semibold tracking-tight text-ink-900">
-        The tools change. The problem doesn&apos;t.
+        The tools change. The problem doesn’t.
       </p>
       <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
         {groups.map((group) => (

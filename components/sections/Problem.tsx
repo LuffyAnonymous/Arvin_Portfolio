@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 
 type Item = {
   title: string;
@@ -77,14 +78,14 @@ function ProblemCard({ item }: { item: Item }) {
       onMouseLeave={reset}
       onBlur={reset}
       onClick={play}
-      className="group flex h-full flex-col justify-between bg-ink-50 p-6 text-left transition-colors duration-200 hover:bg-white"
+      className="group flex h-full flex-col justify-between bg-ink-50 p-6 text-left transition-colors duration-150 hover:bg-white"
     >
       <div className="flex items-center justify-between gap-3">
         <h3 className="font-display text-lg font-semibold tracking-tight text-ink-900">
           {item.title}
         </h3>
         <span
-          className={`h-2 w-2 shrink-0 rounded-sm transition-colors duration-200 ${
+          className={`h-2 w-2 shrink-0 rounded-sm transition-colors duration-150 ${
             open ? "bg-accent-500" : "bg-ink-300"
           }`}
           aria-hidden
@@ -95,7 +96,7 @@ function ProblemCard({ item }: { item: Item }) {
         {open ? (
           <div>
             <p
-              className={`font-mono text-[0.65rem] uppercase tracking-[0.1em] transition-colors duration-200 ${
+              className={`font-mono text-[0.65rem] uppercase tracking-[0.1em] transition-colors duration-150 ${
                 phase === "automated" ? "text-accent-600" : "text-ink-500"
               }`}
             >
@@ -121,26 +122,28 @@ function ProblemCard({ item }: { item: Item }) {
 
 export function Problem() {
   return (
-    <section className="bg-ink-50 py-24 md:py-32">
+    <section id="problem" className="bg-ink-50 py-24 md:py-32">
       <Container>
-        <SectionHeading
-          eyebrow="The pattern"
-          title="If you're doing this every day, we should talk."
-          description="Hover — or tap — any of these. That's roughly what changes when it's automated."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="The pattern"
+            title="If you're doing this every day, we should talk."
+            description="Hover — or tap — any of these. That's roughly what changes when it's automated."
+          />
+        </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal delay={100} className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <ProblemCard key={item.title} item={item} />
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-10 max-w-2xl border-l-4 border-accent-500 pl-6">
+        <Reveal delay={200} className="mt-10 max-w-2xl border-l-4 border-accent-500 pl-6">
           <p className="text-xl font-medium leading-relaxed text-ink-900">
-            If a process is repetitive, rule-based, and happens regularly, there&apos;s a
+            If a process is repetitive, rule-based, and happens regularly, there’s a
             good chance it can be automated.
           </p>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );
