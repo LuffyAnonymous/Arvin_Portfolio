@@ -22,13 +22,7 @@ function escapeHtml(value: string) {
 
 async function sendNotification(payload: Required<Pick<ContactPayload, "name" | "email" | "automate">> &
   ContactPayload) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.warn(
-      "RESEND_API_KEY is not set — contact form submissions are validated but not delivered. See README.",
-    );
-    return;
-  }
+  const apiKey = process.env.RESEND_API_KEY!;
 
   const rows: [string, string | undefined][] = [
     ["Name", payload.name],
@@ -94,6 +88,13 @@ export async function POST(request: NextRequest) {
 
   if (frequency && !FREQUENCIES.has(frequency)) {
     return NextResponse.json({ error: "Unrecognised frequency value." }, { status: 400 });
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json(
+      { error: `Contact delivery is not configured. Please email Arvin directly at ${site.email}.` },
+      { status: 503 },
+    );
   }
 
   try {

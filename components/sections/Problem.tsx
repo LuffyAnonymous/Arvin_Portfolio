@@ -104,14 +104,14 @@ function ProblemCard({ item }: { item: Item }) {
             </p>
             <ol className="mt-2 space-y-1">
               {steps.map((step) => (
-                <li key={step} className="font-mono text-sm text-ink-700">
+                <li key={step} className="font-sans text-sm text-ink-700">
                   {step}
                 </li>
               ))}
             </ol>
           </div>
         ) : (
-          <p className="font-mono text-xs uppercase tracking-[0.1em] text-ink-400">
+          <p className="font-sans text-xs text-ink-400">
             Hover to see it automated
           </p>
         )}

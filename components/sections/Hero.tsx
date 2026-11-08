@@ -49,7 +49,7 @@ export function Hero() {
               Automate the work your team shouldn’t have to do.
             </h1>
 
-            <p className="mt-5 flex items-center gap-2 font-mono text-sm text-accent-300">
+            <p className="mt-5 flex items-center gap-2 font-mono text-xs text-accent-300">
               <span className="text-ink-600">$</span>
               <TypewriterCycle words={focusAreas} />
             </p>

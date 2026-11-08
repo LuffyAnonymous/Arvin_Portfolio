@@ -45,7 +45,7 @@ export function Projects() {
                 className="grid grid-cols-1 gap-10 border-t border-ink-50/10 py-14 first:pt-0 md:grid-cols-2 md:gap-16 md:py-20"
               >
                 <div className={reversed ? "md:order-2" : ""}>
-                  <span className="font-mono text-sm text-accent-500">
+                  <span className="font-mono text-xs text-accent-500">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <p className="mt-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-300">

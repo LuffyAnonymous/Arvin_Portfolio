@@ -74,7 +74,7 @@ export function WorkflowStrip({
             </div>
             <div className={`pb-6 ${isAuto ? "md:pb-0" : ""}`}>
               <p
-                className={`break-words font-mono text-sm transition-colors duration-200 ${
+                className={`break-words font-mono text-xs transition-colors duration-200 ${
                   isActive ? "text-accent-500" : isDark ? "text-ink-100" : "text-ink-800"
                 }`}
               >

@@ -30,7 +30,7 @@ export function Marquee({
         {track.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className={`flex items-center gap-4 font-mono text-sm tracking-[0.14em] ${
+            className={`flex items-center gap-4 font-mono text-xs tracking-[0.06em] ${
               tone === "dark" ? "text-ink-500" : "text-ink-400"
             }`}
           >

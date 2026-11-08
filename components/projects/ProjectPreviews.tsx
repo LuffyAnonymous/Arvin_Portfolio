@@ -81,7 +81,7 @@ export function BudgetFlowPreview() {
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.1em] text-ink-500">
           Recent transactions
         </p>
-        <ul className="space-y-2 font-mono text-sm">
+        <ul className="space-y-2 font-sans text-sm">
           <li className="flex justify-between text-ink-300">
             <span>Netflix</span>
             <span>-45 AED</span>
@@ -119,7 +119,7 @@ export function DataExtractionPreview() {
 
       <div>
         <p className="font-mono text-xs uppercase tracking-[0.1em] text-ink-400">Source</p>
-        <p className="mt-1 font-mono text-sm text-ink-100">Website</p>
+        <p className="mt-1 font-sans text-sm text-ink-100">Website</p>
       </div>
 
       <div className="mt-5">

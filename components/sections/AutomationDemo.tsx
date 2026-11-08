@@ -112,7 +112,7 @@ export function AutomationDemo() {
                     <span className="font-mono text-xs text-ink-600">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-mono text-sm text-ink-300">{step}</span>
+                    <span className="font-sans text-sm text-ink-300">{step}</span>
                   </li>
                 ))}
               </ol>
@@ -144,7 +144,7 @@ export function AutomationDemo() {
                         aria-hidden
                       />
                       <span
-                        className={`font-mono text-sm ${
+                        className={`font-sans text-sm ${
                           state === "waiting" ? "text-ink-500" : "text-ink-100"
                         }`}
                       >
@@ -154,7 +154,7 @@ export function AutomationDemo() {
                   );
                 })}
                 {phase === "done" ? (
-                  <li className="flex items-center gap-3 border-t border-ink-50/10 py-2.5 font-mono text-sm text-accent-400">
+                  <li className="flex items-center gap-3 border-t border-ink-50/10 py-2.5 font-sans text-sm text-accent-400">
                     <span aria-hidden>✓</span> Done
                   </li>
                 ) : null}

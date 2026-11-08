@@ -20,7 +20,7 @@ Open http://localhost:3000.
   3. Add it as an environment variable named `RESEND_API_KEY`:
      - Locally: create `.env.local` with `RESEND_API_KEY=re_xxx`.
      - On Vercel: Project → Settings → Environment Variables → add `RESEND_API_KEY` for Production (and Preview/Development if you want it there too), then redeploy.
-  4. Without the key set, submissions still validate correctly but nothing gets sent — a warning is logged instead, so local dev without Resend configured won't break.
+  4. Without the key set, valid submissions return a clear delivery error and the form asks the visitor to email you directly. The site will not claim an undelivered message was sent.
   5. Once a real domain is attached, switch the `from` address in `sendNotification()` (currently `onboarding@resend.dev`) to something on that domain after verifying it in Resend, so you can send to any address, not just your own.
 
 ## Structure

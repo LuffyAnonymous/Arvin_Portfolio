@@ -117,7 +117,7 @@ export function Process() {
                   />
                   <div>
                     <span
-                      className={`font-mono text-sm transition-colors duration-300 ${
+                      className={`font-mono text-xs transition-colors duration-300 ${
                         isActive ? "text-accent-600" : "text-ink-400"
                       }`}
                     >
@@ -137,7 +137,7 @@ export function Process() {
                 </button>
 
                 {isSelected ? (
-                  <p className="animate-fade-up mt-3 max-w-md pl-10 font-mono text-xs leading-relaxed text-ink-500">
+                    <p className="animate-fade-up mt-3 max-w-md pl-10 font-sans text-sm leading-relaxed text-ink-500">
                     {step.detail}
                   </p>
                 ) : null}
