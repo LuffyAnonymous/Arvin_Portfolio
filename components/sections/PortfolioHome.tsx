@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, Database, GraduationCap, MapPin, MonitorCog, Workflow } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, Database, GraduationCap, MapPin, MonitorCog, Phone, Workflow } from "lucide-react";
 import { site } from "@/lib/site";
 import { Contact } from "@/components/sections/Contact";
 
@@ -85,7 +85,7 @@ export function PortfolioHome() {
         </div>
       </section>
 
-      <section id="contact" className="section contact-section"><div className="content-width contact-layout"><div><p className="section-kicker">CONTACT</p><h2>Let’s connect and build something meaningful.</h2><p className="contact-lede">I’m always interested in connecting with professionals, exploring new opportunities, and contributing to teams building meaningful technology solutions.</p><div className="contact-details"><a href={`mailto:${site.email}`}>{site.email}<ArrowUpRight size={16} aria-hidden="true" /></a><a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={16} aria-hidden="true" /></a><a href={site.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={16} aria-hidden="true" /></a><span><MapPin size={16} aria-hidden="true" /> Dubai, UAE</span></div></div><Contact /></div></section>
+      <section id="contact" className="section contact-section"><div className="content-width contact-layout"><div><p className="section-kicker">CONTACT</p><h2>Let’s connect and build something meaningful.</h2><p className="contact-lede">I’m always interested in connecting with professionals, exploring new opportunities, and contributing to teams building meaningful technology solutions.</p><div className="contact-details"><a href={`mailto:${site.email}`}>{site.email}<ArrowUpRight size={16} aria-hidden="true" /></a><a href={`tel:${site.phone.replace(/\s/g, "")}`}><Phone size={16} aria-hidden="true" />{site.phone}</a><a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={16} aria-hidden="true" /></a><a href={site.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={16} aria-hidden="true" /></a><span><MapPin size={16} aria-hidden="true" /> Dubai, UAE</span></div></div><Contact /></div></section>
     </div>
   );
 }
