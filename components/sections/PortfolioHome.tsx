@@ -44,7 +44,7 @@ export function PortfolioHome() {
             <p className="hero-description">I’m a Computer Science graduate and technology professional specializing in IT support, technical operations, workflow automation, and software development. I enjoy solving technical problems, improving business processes, and building practical digital solutions.</p>
             <div className="hero-actions">
               <Link className="button button-primary" href="#projects">Explore my work <ArrowDownRight size={17} aria-hidden="true" /></Link>
-              <a className="button button-outline" href="/Arvin_Poliga.pdf" download="Arvin_Poliga_CV.pdf">Download my CV <ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="button button-outline" href="/Arvin_Poliga_CV_Cheshno_Updated.pdf" download="Arvin_Poliga_CV_Cheshno_Updated.pdf">Download my CV <ArrowUpRight size={16} aria-hidden="true" /></a>
             </div>
             <div className="hero-meta"><span><MapPin size={16} aria-hidden="true" /> Dubai, United Arab Emirates</span><span>Open to suitable UAE and international opportunities</span></div>
           </div>
