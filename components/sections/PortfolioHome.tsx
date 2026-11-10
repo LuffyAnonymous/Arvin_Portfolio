@@ -29,6 +29,7 @@ const skills = [
   ["Frameworks", "Next.js · React · Flask · Tailwind CSS · Prisma"],
   ["Automation & data", "n8n · Selenium · Playwright · Excel · Google Sheets"],
   ["Platforms & systems", "PostgreSQL · Supabase · Salesforce · Genesys · REST APIs"],
+  ["Creative & visual content", "Adobe Photoshop · Illustrator · Canva · CapCut · ChatGPT · Higgsfield"],
 ];
 
 export function PortfolioHome() {
@@ -80,7 +81,7 @@ export function PortfolioHome() {
       <section id="experience" className="section section-experience">
         <div className="content-width"><div className="section-heading-row"><div><p className="section-kicker">EXPERIENCE & EDUCATION</p><h2>Built through service, systems and hands-on work.</h2></div><span className="section-aside">Professional experience across ticketing, healthcare and financial services.</span></div>
           <div className="experience-layout"><div className="timeline">{experience.map((job) => <article className="timeline-item" key={job.company}><div className="timeline-date">{job.date}</div><div className="timeline-content"><span className="timeline-marker" aria-hidden="true" /><h3>{job.role}</h3><p className="timeline-company">{job.company}</p><p>{job.detail}</p></div></article>)}</div>
-            <aside className="credentials"><div className="education-card"><GraduationCap size={22} aria-hidden="true" /><p className="section-kicker">EDUCATION</p><h3>Bachelor of Science<br />in Computer Science</h3></div><div className="skills-panel"><Database size={20} aria-hidden="true" /><p className="section-kicker">TECHNICAL SKILLS</p>{skills.map(([label, items]) => <div className="skill-group" key={label}><h4>{label}</h4><p>{items}</p></div>)}</div></aside>
+            <aside className="credentials"><div className="education-card"><GraduationCap size={22} aria-hidden="true" /><p className="section-kicker">EDUCATION</p><h3>Bachelor of Science<br />in Computer Science</h3></div><div className="skills-panel"><Database size={20} aria-hidden="true" /><p className="section-kicker">SKILLS & TOOLS</p>{skills.map(([label, items]) => <div className="skill-group" key={label}><h4>{label}</h4><p>{items}</p></div>)}</div></aside>
           </div>
         </div>
       </section>
